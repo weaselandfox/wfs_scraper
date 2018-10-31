@@ -6,7 +6,7 @@ from owslib.wfs import WebFeatureService
 #    version='1.1.0'
 # )
 
-default_format = 'json'
+default_format = None
 default_limit = None
 default_url = 'https://geodata.nationaalgeoregister.nl/bodemkaart50000/wfs'
 default_content = None
@@ -57,8 +57,11 @@ def get_feature(content):
 
 for idx, content in enumerate(contents):
     log('Getting features of ' + content)
-    file = open('output/output_' + content + '.' + format, 'w')
+
+    extension = '.' + format if format is not None else ''
+    file = open('output/output_' + content + extension, 'w')
     response = get_feature(content)
+
     log('Writing features of ' + content + ' to file')
 
     value = None
