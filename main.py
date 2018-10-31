@@ -54,6 +54,15 @@ for idx, content in enumerate(contents):
     file = open('output/output_' + content + '.' + format, 'w')
     response = get_feature(content)
     log('Writing features of ' + content + ' to file')
-    file.write(response.getvalue())
+
+    value = None
+
+    try:
+        value = response.getvalue()
+    except Exception as e:
+        print(e)
+
+    if (value is not None):
+        file.write(response.getvalue())
 
 exit()
