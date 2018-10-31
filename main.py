@@ -9,17 +9,20 @@ from owslib.wfs import WebFeatureService
 default_format = 'json'
 default_limit = None
 default_url = 'https://geodata.nationaalgeoregister.nl/bodemkaart50000/wfs'
+default_content = None
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--format', default=default_format)
 parser.add_argument('-l', '--limit', default=default_limit)
 parser.add_argument('-u', '--url', default=default_url)
+parser.add_argument('-c', '--content', default=default_content)
 
 args = parser.parse_args()
 
 format = args.format
 limit = args.limit
 url = args.url
+content = args.content
 
 print('args', args)
 
@@ -29,6 +32,9 @@ wfs = WebFeatureService(
 )
 
 contents = list(wfs.contents)
+
+if (content is not None):
+    contents = [content]
 
 
 def log(message):
