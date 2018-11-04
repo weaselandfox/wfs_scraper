@@ -1,4 +1,4 @@
-BASEURL="https://geodata.nationaalgeoregister.nl/bodemkaart50000/wfs?service=wfs"
+BASEURL="http://geoserv.weichand.de:8080/geoserver/wfs"
 
 for LAYERNAME in `wget -qO- $BASEURL"&request=GetCapabilities" | xpath -q -e "//FeatureType/Name/text()"` ; do 
     PARTS=(${LAYERNAME//:/ })

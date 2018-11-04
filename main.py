@@ -8,15 +8,34 @@ from owslib.wfs import WebFeatureService
 
 default_format = None
 default_limit = None
-default_url = 'https://geodata.nationaalgeoregister.nl/bodemkaart50000/wfs'
+default_url = 'http://geoserv.weichand.de:8080/geoserver/wfs'
 default_content = None
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--format', default=default_format)
-parser.add_argument('-l', '--limit', default=default_limit)
-parser.add_argument('-u', '--url', default=default_url)
-parser.add_argument('-c', '--content', default=default_content)
-parser.add_argument('--list', action='store_true')
+parser.add_argument(
+    '-f', '--format',
+    default=default_format,
+    help='Specify the output format.'
+)
+parser.add_argument(
+    '-l', '--limit',
+    default=default_limit
+)
+parser.add_argument(
+    '-u', '--url',
+    default=default_url,
+    help='Specify the url of the WFS.'
+)
+parser.add_argument(
+    '-c', '--content',
+    default=default_content,
+    help='Specify a typename to scrape.'
+)
+parser.add_argument(
+    '--list',
+    action='store_true',
+    help='Print a list of FeatureTypes and exit.'
+)
 
 args = parser.parse_args()
 
