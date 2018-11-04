@@ -7,7 +7,6 @@ from owslib.wfs import WebFeatureService
 # )
 
 default_format = None
-default_limit = None
 default_url = 'http://geoserv.weichand.de:8080/geoserver/wfs'
 default_content = None
 
@@ -16,10 +15,6 @@ parser.add_argument(
     '-f', '--format',
     default=default_format,
     help='Specify the output format.'
-)
-parser.add_argument(
-    '-l', '--limit',
-    default=default_limit
 )
 parser.add_argument(
     '-u', '--url',
@@ -40,7 +35,6 @@ parser.add_argument(
 args = parser.parse_args()
 
 format = args.format
-limit = args.limit
 url = args.url
 content = args.content
 
