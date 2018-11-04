@@ -16,6 +16,7 @@ parser.add_argument('-f', '--format', default=default_format)
 parser.add_argument('-l', '--limit', default=default_limit)
 parser.add_argument('-u', '--url', default=default_url)
 parser.add_argument('-c', '--content', default=default_content)
+parser.add_argument('--list', action='store_true')
 
 args = parser.parse_args()
 
@@ -24,14 +25,16 @@ limit = args.limit
 url = args.url
 content = args.content
 
-print('args', args)
-
 wfs = WebFeatureService(
     url=url,
     version='1.1.0'
 )
 
 contents = list(wfs.contents)
+
+if args.list:
+    print(contents)
+    exit()
 
 if (content is not None):
     contents = [content]
